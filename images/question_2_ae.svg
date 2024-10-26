@@ -1,0 +1,107 @@
+<svg width="1400" height="250" xmlns="http://www.w3.org/2000/svg">
+  <!-- Arrowhead marker definition -->
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="0" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#000" />
+    </marker>
+  </defs>
+
+  <!-- Input Layer -->
+  <rect x="30" y="100" width="100" height="100" stroke="black" fill="lightblue"/>
+  <text x="80" y="150" font-size="12" text-anchor="middle">Input</text>
+  <text x="80" y="170" font-size="12" text-anchor="middle">28x28x1</text>
+
+  <!-- Arrow from Input to Conv2d(1→16) -->
+  <line x1="130" y1="150" x2="160" y2="150" stroke="black" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Conv2d(1→16) + ReLU -->
+  <rect x="160" y="100" width="100" height="100" stroke="black" fill="lightgreen"/>
+  <text x="210" y="125" font-size="12" text-anchor="middle">Conv2d</text>
+  <text x="210" y="140" font-size="12" text-anchor="middle">(1→16)</text>
+  <text x="210" y="155" font-size="12" text-anchor="middle">ReLU</text>
+  <text x="210" y="170" font-size="12" text-anchor="middle">14x14x16</text>
+
+  <!-- Arrow from Conv2d(1→16) to Conv2d(16→32) -->
+  <line x1="260" y1="150" x2="290" y2="150" stroke="black" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Conv2d(16→32) + ReLU -->
+  <rect x="290" y="100" width="100" height="100" stroke="black" fill="lightgreen"/>
+  <text x="340" y="125" font-size="12" text-anchor="middle">Conv2d</text>
+  <text x="340" y="140" font-size="12" text-anchor="middle">(16→32)</text>
+  <text x="340" y="155" font-size="12" text-anchor="middle">ReLU</text>
+  <text x="340" y="170" font-size="12" text-anchor="middle">7x7x32</text>
+
+  <!-- Arrow from Conv2d(16→32) to Linear -->
+  <line x1="390" y1="150" x2="420" y2="150" stroke="black" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Linear Layer -->
+  <rect x="420" y="100" width="100" height="100" stroke="black" fill="lightgreen"/>
+  <text x="470" y="140" font-size="12" text-anchor="middle">Linear</text>
+  <text x="470" y="155" font-size="12" text-anchor="middle">(1568→dim)</text>
+
+  <!-- Arrow from Linear to Latent Space -->
+  <line x1="520" y1="150" x2="550" y2="150" stroke="black" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Latent Space -->
+  <rect x="550" y="100" width="100" height="100" stroke="black" fill="orange"/>
+  <text x="600" y="150" font-size="12" text-anchor="middle">Latent Space</text>
+  <text x="600" y="170" font-size="12" text-anchor="middle">dim</text>
+
+  <!-- Arrow from Latent Space to Linear -->
+  <line x1="650" y1="150" x2="680" y2="150" stroke="black" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Linear Layer -->
+  <rect x="680" y="100" width="100" height="100" stroke="black" fill="lightpink"/>
+  <text x="730" y="140" font-size="12" text-anchor="middle">Linear</text>
+  <text x="730" y="155" font-size="12" text-anchor="middle">(dim→1568)</text>
+
+  <!-- Arrow from Linear to ConvTranspose2d(32→16) -->
+  <line x1="780" y1="150" x2="810" y2="150" stroke="black" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- ConvTranspose2d(32→16) + ReLU -->
+  <rect x="810" y="100" width="100" height="100" stroke="black" fill="lightpink"/>
+  <text x="860" y="115" font-size="12" text-anchor="middle">ConvTranspose2d</text>
+  <text x="860" y="130" font-size="12" text-anchor="middle">(32→16)</text>
+  <text x="860" y="145" font-size="12" text-anchor="middle">ReLU</text>
+  <text x="860" y="160" font-size="12" text-anchor="middle">14x14x16</text>
+
+  <!-- Arrow from ConvTranspose2d(32→16) to ConvTranspose2d(16→1) -->
+  <line x1="910" y1="150" x2="940" y2="150" stroke="black" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- ConvTranspose2d(16→1) + Sigmoid -->
+  <rect x="940" y="100" width="100" height="100" stroke="black" fill="lightpink"/>
+  <text x="990" y="115" font-size="12" text-anchor="middle">ConvTranspose2d</text>
+  <text x="990" y="130" font-size="12" text-anchor="middle">(16→1)</text>
+  <text x="990" y="145" font-size="12" text-anchor="middle">Sigmoid</text>
+  <text x="990" y="160" font-size="12" text-anchor="middle">28x28x1</text>
+
+  <!-- Arrow from ConvTranspose2d(16→1) to Output -->
+  <line x1="1040" y1="150" x2="1070" y2="150" stroke="black" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Output Layer -->
+  <rect x="1070" y="100" width="100" height="100" stroke="black" fill="lightblue"/>
+  <text x="1120" y="150" font-size="12" text-anchor="middle">Output</text>
+  <text x="1120" y="170" font-size="12" text-anchor="middle">28x28x1</text>
+
+  <!-- Encoder Box -->
+  <rect x="150" y="80" width="390" height="140" stroke="black" fill="none" stroke-dasharray="5,5"/>
+  <text x="275" y="240" font-size="14" text-anchor="middle" font-weight="bold">Encoder</text>
+
+  <!-- Decoder Box -->
+  <rect x="670" y="80" width="390" height="140" stroke="black" fill="none" stroke-dasharray="5,5"/>
+  <text x="925" y="240" font-size="14" text-anchor="middle" font-weight="bold">Decoder</text>
+
+  <!-- Centered Text -->
+  <text x="600" y="50" font-size="20" text-anchor="middle" font-weight="bold">Autoencoder Architecture (Question 2)</text>
+
+  <!-- Latent Space Description -->
+  <text x="600" y="235" font-size="12" text-anchor="middle">Compressed representation</text>
+  <text x="600" y="250" font-size="12" text-anchor="middle">dim = 1, 2, or 3</text>
+
+  <!-- Linear Layer Descriptions -->
+  <text x="470" y="235" font-size="12" text-anchor="middle">Flattens and reduces</text>
+  <text x="470" y="250" font-size="12" text-anchor="middle">to latent dimension</text>
+
+  <text x="730" y="235" font-size="12" text-anchor="middle">Expands from latent</text>
+  <text x="730" y="250" font-size="12" text-anchor="middle">to 3D tensor shape</text>
+</svg>

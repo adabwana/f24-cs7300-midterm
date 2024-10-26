@@ -1,0 +1,112 @@
+<svg width="1400" height="255" xmlns="http://www.w3.org/2000/svg">
+  <!-- Arrowhead marker definition -->
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="0" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#000" />
+    </marker>
+  </defs>
+
+  <!-- Input Layer -->
+  <rect x="30" y="100" width="100" height="100" stroke="black" fill="lightblue"/>
+  <text x="80" y="150" font-size="12" text-anchor="middle">Input</text>
+  <text x="80" y="170" font-size="12" text-anchor="middle">x</text>
+
+  <!-- Add Noise -->
+  <rect x="160" y="100" width="100" height="100" stroke="black" fill="lightyellow"/>
+  <text x="210" y="150" font-size="12" text-anchor="middle">Add Noise</text>
+
+  <!-- Arrow from Input to Add Noise -->
+  <line x1="130" y1="150" x2="160" y2="150" stroke="black" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Arrow from Add Noise to Conv2d(1→16) -->
+  <line x1="260" y1="150" x2="290" y2="150" stroke="black" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Conv2d(1→16) + ReLU -->
+  <rect x="290" y="100" width="100" height="100" stroke="black" fill="lightgreen"/>
+  <text x="340" y="125" font-size="12" text-anchor="middle">Conv2d</text>
+  <text x="340" y="140" font-size="12" text-anchor="middle">(1→16)</text>
+  <text x="340" y="155" font-size="12" text-anchor="middle">ReLU</text>
+
+  <!-- Arrow from Conv2d(1→16) to Conv2d(16→32) -->
+  <line x1="390" y1="150" x2="420" y2="150" stroke="black" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Conv2d(16→32) + ReLU -->
+  <rect x="420" y="100" width="100" height="100" stroke="black" fill="lightgreen"/>
+  <text x="470" y="125" font-size="12" text-anchor="middle">Conv2d</text>
+  <text x="470" y="140" font-size="12" text-anchor="middle">(16→32)</text>
+  <text x="470" y="155" font-size="12" text-anchor="middle">ReLU</text>
+
+  <!-- Arrow from Conv2d(16→32) to Conv2d(32→64) -->
+  <line x1="520" y1="150" x2="550" y2="150" stroke="black" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Conv2d(32→64) + ReLU -->
+  <rect x="550" y="100" width="100" height="100" stroke="black" fill="lightgreen"/>
+  <text x="600" y="125" font-size="12" text-anchor="middle">Conv2d</text>
+  <text x="600" y="140" font-size="12" text-anchor="middle">(32→64)</text>
+  <text x="600" y="155" font-size="12" text-anchor="middle">ReLU</text>
+
+  <!-- Arrow from Conv2d(32→64) to Latent Space -->
+  <line x1="650" y1="150" x2="680" y2="150" stroke="black" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Latent Space -->
+  <rect x="680" y="100" width="100" height="100" stroke="black" fill="orange"/>
+  <text x="730" y="150" font-size="12" text-anchor="middle">Latent Space</text>
+
+  <!-- Arrow from Latent Space to ConvTrans2d(64→32) -->
+  <line x1="780" y1="150" x2="810" y2="150" stroke="black" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- ConvTrans2d(64→32) + ReLU -->
+  <rect x="810" y="100" width="100" height="100" stroke="black" fill="lightpink"/>
+  <text x="860" y="115" font-size="12" text-anchor="middle">ConvTrans2d</text>
+  <text x="860" y="130" font-size="12" text-anchor="middle">(64→32)</text>
+  <text x="860" y="145" font-size="12" text-anchor="middle">ReLU</text>
+
+  <!-- Arrow from ConvTrans2d(64→32) to ConvTrans2d(32→16) -->
+  <line x1="910" y1="150" x2="940" y2="150" stroke="black" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- ConvTrans2d(32→16) + ReLU -->
+  <rect x="940" y="100" width="100" height="100" stroke="black" fill="lightpink"/>
+  <text x="990" y="115" font-size="12" text-anchor="middle">ConvTrans2d</text>
+  <text x="990" y="130" font-size="12" text-anchor="middle">(32→16)</text>
+  <text x="990" y="145" font-size="12" text-anchor="middle">ReLU</text>
+
+  <!-- Arrow from ConvTrans2d(32→16) to ConvTrans2d(16→1) -->
+  <line x1="1040" y1="150" x2="1070" y2="150" stroke="black" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- ConvTrans2d(16→1) + Sigmoid -->
+  <rect x="1070" y="100" width="100" height="100" stroke="black" fill="lightpink"/>
+  <text x="1120" y="115" font-size="12" text-anchor="middle">ConvTrans2d</text>
+  <text x="1120" y="130" font-size="12" text-anchor="middle">(16→1)</text>
+  <text x="1120" y="145" font-size="12" text-anchor="middle">Sigmoid</text>
+
+  <!-- Arrow from ConvTrans2d(16→1) to Output -->
+  <line x1="1170" y1="150" x2="1200" y2="150" stroke="black" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Output Layer -->
+  <rect x="1200" y="100" width="100" height="100" stroke="black" fill="lightblue"/>
+  <text x="1250" y="150" font-size="12" text-anchor="middle">Output</text>
+  <text x="1250" y="170" font-size="12" text-anchor="middle">x̂</text>
+
+  <!-- Encoder Box -->
+  <rect x="280" y="80" width="390" height="140" stroke="black" fill="none" stroke-dasharray="5,5"/>
+  <text x="375" y="240" font-size="14" text-anchor="middle" font-weight="bold">Encoder</text>
+
+  <!-- Decoder Box -->
+  <rect x="800" y="80" width="390" height="140" stroke="black" fill="none" stroke-dasharray="5,5"/>
+  <text x="900" y="240" font-size="14" text-anchor="middle" font-weight="bold">Decoder</text>
+
+  <!-- Centered Text -->
+  <text x="700" y="50" font-size="20" text-anchor="middle" font-weight="bold">Autoencoder Architecture</text>
+
+  <!-- Latent Space Description -->
+  <text x="730" y="240" font-size="12" text-anchor="middle">Compressed representation</text>
+  <text x="730" y="255" font-size="12" text-anchor="middle">of input data (64 channels)</text>
+
+  <!-- Add Noise Description -->
+  <text x="210" y="215" font-size="12" text-anchor="middle">Adds Gaussian noise</text>
+  <text x="210" y="230" font-size="12" text-anchor="middle">with mean 0, std 0.1</text>
+
+  <!-- Sigmoid Description -->
+  <text x="1120" y="240" font-size="12" text-anchor="middle">Sigmoid ensures output</text>
+  <text x="1120" y="255" font-size="12" text-anchor="middle">is in range [0, 1]</text>
+</svg>
