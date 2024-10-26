@@ -1,8 +1,0 @@
-python_version == "3.11.2"
-
-ipykernel
-torch
-torchvision
-matplotlib
-numpy
-scikit-learn

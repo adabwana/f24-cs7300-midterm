@@ -1,16 +1,27 @@
-^:kindly/hide-code
-(ns index
-  (:require
-    [formatting :refer [md]])
-  (:import [java.time LocalDate]
-           [java.time.format DateTimeFormatter]))
 
-(let [formatter (DateTimeFormatter/ofPattern "M/d/yy")
-      current-date (str (.format (LocalDate/now) formatter))]
-  (md (str "
+---
+format:
+  html: {toc: true, toc-depth: 4, theme: cosmo, number-sections: false, output-file: index.html}
+fontsize: 0.9em
+code-block-background: true
+include-in-header: {text: '<link rel = "icon" href = "data:," />'}
+toc-title-numbers: false
+number-depth: 0
+
+---
+<style></style><style>.printedClojure .sourceCode {
+  background-color: transparent;
+  border-style: none;
+}
+</style><style>.clay-limit-image-width .clay-image {max-width: 100%}
+.clay-side-by-side .sourceCode {margin: 0}
+.clay-side-by-side {margin: 1em 0}
+</style>
+<script src="index_files/md-default0.js" type="text/javascript"></script><script src="index_files/md-default1.js" type="text/javascript"></script>
+
 
 ### Jaryt Salvo
-**Date:** **" current-date "**
+**Date:** **10/26/24**
 
 **Fall 2024 | CS7300 Unsupervised Learning**
 
@@ -63,4 +74,15 @@ Key features of the implementation:
 
 This project demonstrates the application of autoencoders in both super-resolution tasks and dimensionality reduction, showcasing their versatility in unsupervised learning. It also provides a comparative analysis between traditional (PCA) and modern (autoencoder) dimensionality reduction techniques, offering insights into their respective strengths and use cases.
 
-The code for both questions is implemented in separate Python scripts (`question_1.py` and `question_2.py`), allowing for modular development and easy comparison of results.")))
+The code for both questions is implemented in separate Python scripts (`question_1.py` and `question_2.py`), allowing for modular development and easy comparison of results.
+
+
+```{=html}
+<div style="background-color:grey;height:2px;width:100%;"></div>
+```
+
+
+
+```{=html}
+<div></div>
+```
